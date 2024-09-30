@@ -11,8 +11,10 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-# Chicken.gg API key and base URL (Replace with the correct API key)
-api_key = os.getenv("API_KEY", "default_key")
+# Chicken.gg API key (hardcoded into the script)
+api_key = "316a2f45bff17a887b8a37748e61ac06"
+
+# Base URL for Chicken.gg API
 url_template = f"https://affiliates.chicken.gg/v1/referrals?key={api_key}&minTime={{min_time}}&maxTime={{max_time}}"
 
 # Define current and end time in milliseconds
