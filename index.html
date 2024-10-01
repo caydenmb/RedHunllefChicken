@@ -125,6 +125,11 @@
             color: #fff;
             background-color: #444;
             box-sizing: border-box;
+            font-size: 107%; /* Increased font size by 7% for podium places */
+        }
+
+        .podium div h3 {
+            margin-bottom: 10px; /* Small spacer between username and wager */
         }
 
         /* Styling for podium heights */
@@ -132,7 +137,6 @@
             background-color: gold;
             height: 270px;
             width: 220px;
-            font-size: 1.8rem;
             box-shadow: 0 0 20px rgba(255, 215, 0, 1);
             text-shadow: 2px 2px 10px rgba(255, 215, 0, 1);
         }
@@ -141,7 +145,6 @@
             background-color: silver;
             height: 220px;
             width: 180px;
-            font-size: 1.6rem;
             box-shadow: 0 0 15px rgba(192, 192, 192, 1);
             text-shadow: 2px 2px 10px rgba(192, 192, 192, 1);
         }
@@ -150,7 +153,6 @@
             background-color: #cd7f32;
             height: 200px;
             width: 180px;
-            font-size: 1.4rem;
             box-shadow: 0 0 15px rgba(205, 127, 50, 1);
             text-shadow: 2px 2px 10px rgba(205, 127, 50, 1);
         }
@@ -168,10 +170,15 @@
             padding: 10px;
             border-radius: 10px;
             text-align: center;
-            width: 100%;
-            max-width: 180px;
+            width: 180px; /* Fixed width */
+            height: 120px; /* Fixed height */
             font-size: 1rem;
             box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            overflow-wrap: break-word; /* Ensure long text wraps inside the box */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center text vertically */
+            align-items: center; /* Center text horizontally */
         }
 
         .standing h3 {
@@ -285,8 +292,10 @@
             <p>&copy; 2024 Redhunllef Livestream. All Rights Reserved.</p>
             <p>Built by <a href="https://kick.com/gingrsnaps" target="_blank">GingrSnaps</a></p>
         </footer>
+
     </div>
 
+    <!-- JavaScript will populate the standings -->
     <script>
         const placeholderData = {
             top1: { username: 'Player1', wager: '$10,000' },
