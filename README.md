@@ -1,1 +1,1 @@
-A basic website for the livestreamer Redhunllef.
+A wager tracking (chicken.gg) website for the streamer redhunllef.
