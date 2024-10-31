@@ -18,8 +18,8 @@ api_key = "316a2f45bff17a887b8a37748e61ac06"
 url_template = f"https://affiliates.chicken.gg/v1/referrals?key={api_key}&minTime={{min_time}}&maxTime={{max_time}}"
 
 # Define min_time and end_time in milliseconds
-min_time = 1727628116000  # Set to your specified start time
-end_time = 1728583200000  # Set to your specified end time
+min_time = 1730418267000  # Set to your specified start time
+end_time = 1730390460000  # Set to your specified end time
 
 # Data cache for storing fetched data
 data_cache = {}
