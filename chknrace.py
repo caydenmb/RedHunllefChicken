@@ -87,11 +87,11 @@ def update_placeholder_data():
     except Exception as e:
         log_message('error', f"An error occurred while updating placeholder data: {e}")
 
-# Schedule data fetching every 5 minutes (300 seconds)
+# Schedule data fetching every 2 minutes (120 seconds)
 def schedule_data_fetch():
-    log_message('info', 'Scheduling the next data fetch in 5 minutes.')
+    log_message('info', 'Scheduling the next data fetch in 2 minutes.')
     fetch_data()  # Fetch data immediately when the script starts
-    threading.Timer(300, schedule_data_fetch).start()  # Schedule the next fetch in 5 minutes
+    threading.Timer(120, schedule_data_fetch).start()  # Schedule the next fetch in 2 minutes
 
 # Flask route to serve the cached data
 @app.route("/data")
