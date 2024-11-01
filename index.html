@@ -219,8 +219,24 @@
             header img { width: 180px; }
             .button-container { flex-direction: column; gap: 15px; }
             .button { font-size: 1.3rem; padding: 16px 42px; max-width: 100%; }
-            .podium div { width: 150px; }
-            .other-standings { grid-template-columns: repeat(2, 1fr); }
+            .podium {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .podium div {
+                width: 100%;
+                max-width: 280px;
+            }
+            .other-standings {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            .standing {
+                width: 100%;
+                max-width: 280px;
+                height: auto;
+                font-size: 0.95rem;
+            }
         }
 
         #stars {
