@@ -219,23 +219,37 @@
             header img { width: 180px; }
             .button-container { flex-direction: column; gap: 15px; }
             .button { font-size: 1.3rem; padding: 16px 42px; max-width: 100%; }
+            
+            /* Stack podium for mobile with smaller centered items */
             .podium {
-                flex-direction: column;
-                gap: 20px;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                gap: 10px;
             }
-            .podium div {
-                width: 100%;
-                max-width: 280px;
+            .first {
+                width: 120px;
+                height: 160px;
             }
+            .second,
+            .third {
+                width: 100px;
+                height: 140px;
+            }
+            .first-medal {
+                width: 90px; /* Adjusted for smaller first place */
+            }
+
+            /* Adjust standings layout for readability */
             .other-standings {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
             }
             .standing {
                 width: 100%;
-                max-width: 280px;
+                max-width: 140px;
                 height: auto;
-                font-size: 0.95rem;
+                font-size: 0.9rem;
             }
         }
 
