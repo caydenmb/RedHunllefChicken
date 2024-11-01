@@ -229,23 +229,33 @@
             }
             .podium div {
                 width: 100px;
-                padding: 10px;
-                font-size: 0.9rem;
+                padding: 8px;
+                font-size: 0.8rem;
                 overflow-wrap: break-word;
                 text-overflow: ellipsis;
                 word-wrap: break-word;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            .medal {
+                width: 60px;
+                margin-bottom: 5px;
             }
             .first {
-                width: 120px;
-                height: 160px;
+                width: 130px;
+                height: 180px;
+                padding: 10px;
             }
             .second,
             .third {
-                width: 100px;
-                height: 140px;
+                width: 110px;
+                height: 160px;
+                padding: 8px;
             }
             .first-medal {
-                width: 90px; /* Adjusted for smaller first place */
+                width: 80px; /* Adjusted for smaller first place */
             }
 
             /* Adjust standings layout for readability */
