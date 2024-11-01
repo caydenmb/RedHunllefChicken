@@ -346,23 +346,24 @@
     <!-- JavaScript will populate the standings -->
     <script>
         const placeholderData = {
-            top1: { username: 'Player1', wager: 10000.00 },
-            top2: { username: 'Player2', wager: 8500.00 },
-            top3: { username: 'Player3', wager: 7500.00 },
-            top4: { username: 'Player4', wager: 7000.00 },
-            top5: { username: 'Player5', wager: 6500.00 },
-            top6: { username: 'Player6', wager: 6000.00 },
-            top7: { username: 'Player7', wager: 5500.00 },
-            top8: { username: 'Player8', wager: 5000.00 },
-            top9: { username: 'Player9', wager: 4500.00 },
-            top10: { username: 'Player10', wager: 4000.00 },
-            top11: { username: 'Player11', wager: 3500.00 }
+            top1: { username: 'Player1', wager: '$10,000' },
+            top2: { username: 'Player2', wager: '$8,500' },
+            top3: { username: 'Player3', wager: '$7,500' },
+            top4: { username: 'Player4', wager: '$7,000' },
+            top5: { username: 'Player5', wager: '$6,500' },
+            top6: { username: 'Player6', wager: '$6,000' },
+            top7: { username: 'Player7', wager: '$5,500' },
+            top8: { username: 'Player8', wager: '$5,000' },
+            top9: { username: 'Player9', wager: '$4,500' },
+            top10: { username: 'Player10', wager: '$4,000' },
+            top11: { username: 'Player11', wager: '$3,500' }
         };
 
         function updateWagerRace() {
             fetch('/data')
                 .then(response => response.json())
                 .then(data => {
+                    console.log("Fetched data:", data);  // Debugging: print the data received in the frontend
                     const top3Container = document.getElementById('top-3-standings');
                     const standingsContainer = document.getElementById('wager-standings');
 
@@ -370,26 +371,27 @@
                     standingsContainer.innerHTML = '';
 
                     const top3 = [
-                        { place: '1st', username: data.top1?.username || placeholderData.top1.username, wager: data.top1?.wager.toFixed(2) || placeholderData.top1.wager.toFixed(2), medal: '/static/1st.png' },
-                        { place: '2nd', username: data.top2?.username || placeholderData.top2.username, wager: data.top2?.wager.toFixed(2) || placeholderData.top2.wager.toFixed(2), medal: '/static/2nd.png' },
-                        { place: '3rd', username: data.top3?.username || placeholderData.top3.username, wager: data.top3?.wager.toFixed(2) || placeholderData.top3.wager.toFixed(2), medal: '/static/3rd.png' }
+                        { place: '1st', username: data.top1?.username || placeholderData.top1.username, wager: data.top1?.wager || placeholderData.top1.wager, medal: '/static/1st.png' },
+                        { place: '2nd', username: data.top2?.username || placeholderData.top2.username, wager: data.top2?.wager || placeholderData.top2.wager, medal: '/static/2nd.png' },
+                        { place: '3rd', username: data.top3?.username || placeholderData.top3.username, wager: data.top3?.wager || placeholderData.top3.wager, medal: '/static/3rd.png' }
                     ];
 
+                    // Insert podium in the correct Olympic order
                     top3Container.innerHTML = `
                         <div class="second">
                             <img src="${top3[1].medal}" class="medal" alt="2nd Place Medal">
                             <h3>2nd: ${top3[1].username}</h3>
-                            <p>Wager: $${top3[1].wager}</p>
+                            <p>Wager: ${top3[1].wager}</p>
                         </div>
                         <div class="first">
                             <img src="${top3[0].medal}" class="medal first-medal" alt="1st Place Medal">
                             <h3>1st: ${top3[0].username}</h3>
-                            <p>Wager: $${top3[0].wager}</p>
+                            <p>Wager: ${top3[0].wager}</p>
                         </div>
                         <div class="third">
                             <img src="${top3[2].medal}" class="medal" alt="3rd Place Medal">
                             <h3>3rd: ${top3[2].username}</h3>
-                            <p>Wager: $${top3[2].wager}</p>
+                            <p>Wager: ${top3[2].wager}</p>
                         </div>
                     `;
 
@@ -397,12 +399,12 @@
                         const user = data[`top${i}`] || placeholderData[`top${i}`];
                         const div = document.createElement('div');
                         div.classList.add('standing');
-                        div.innerHTML = `<h3>${i}th: ${user.username}</h3><p>Wager: $${user.wager.toFixed(2)}</p>`;
+                        div.innerHTML = `<h3>${i}th: ${user.username}</h3><p>Wager: ${user.wager}</p>`;
                         standingsContainer.appendChild(div);
                     }
                 })
                 .catch(error => {
-                    console.error('Error fetching wager data:', error);
+                    console.error('Error fetching wager data:', error);  // Debugging: print errors
                     populateWithPlaceholderData();
                 });
         }
@@ -415,26 +417,26 @@
             standingsContainer.innerHTML = '';
 
             const top3 = [
-                { place: '1st', username: placeholderData.top1.username, wager: placeholderData.top1.wager.toFixed(2), medal: '/static/1st.png' },
-                { place: '2nd', username: placeholderData.top2.username, wager: placeholderData.top2.wager.toFixed(2), medal: '/static/2nd.png' },
-                { place: '3rd', username: placeholderData.top3.username, wager: placeholderData.top3.wager.toFixed(2), medal: '/static/3rd.png' }
+                { place: '1st', username: placeholderData.top1.username, wager: placeholderData.top1.wager, medal: '/static/1st.png' },
+                { place: '2nd', username: placeholderData.top2.username, wager: placeholderData.top2.wager, medal: '/static/2nd.png' },
+                { place: '3rd', username: placeholderData.top3.username, wager: placeholderData.top3.wager, medal: '/static/3rd.png' }
             ];
 
             top3Container.innerHTML = `
                 <div class="second">
                     <img src="${top3[1].medal}" class="medal" alt="2nd Place Medal">
                     <h3>2nd: ${top3[1].username}</h3>
-                    <p>Wager: $${top3[1].wager}</p>
+                    <p>Wager: ${top3[1].wager}</p>
                 </div>
                 <div class="first">
                     <img src="${top3[0].medal}" class="medal first-medal" alt="1st Place Medal">
                     <h3>1st: ${top3[0].username}</h3>
-                    <p>Wager: $${top3[0].wager}</p>
+                    <p>Wager: ${top3[0].wager}</p>
                 </div>
                 <div class="third">
                     <img src="${top3[2].medal}" class="medal" alt="3rd Place Medal">
                     <h3>3rd: ${top3[2].username}</h3>
-                    <p>Wager: $${top3[2].wager}</p>
+                    <p>Wager: ${top3[2].wager}</p>
                 </div>
             `;
 
@@ -442,7 +444,7 @@
                 const user = placeholderData[`top${i}`];
                 const div = document.createElement('div');
                 div.classList.add('standing');
-                div.innerHTML = `<h3>${i}th: ${user.username}</h3><p>Wager: $${user.wager.toFixed(2)}</p>`;
+                div.innerHTML = `<h3>${i}th: ${user.username}</h3><p>Wager: ${user.wager}</p>`;
                 standingsContainer.appendChild(div);
             }
         }
